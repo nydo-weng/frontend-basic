@@ -1,0 +1,50 @@
+li, h1 {
+  color: blue;
+}
+
+html {
+  background-color: #bb6666;
+}
+
+#window-container {
+  background-color: #6666bb;
+  color: #ffffff;
+  width: 500px;
+}
+
+#document-container {
+  background-color: #66bb66;
+  color: #ffffff;
+  width: 450px;
+}
+
+#html-container {
+  background-color: #bb66bb;
+  color: #ffffff;
+  width: 400px;
+}
+
+#head-container {
+  background-color: #6666bb;
+  color: #ffffff;
+  width: 350px;
+}
+
+#body-container {
+  background-color: #66bb66;
+  /* border-top: 1px solid #ffffff; */
+  color: #ffffff;
+  width: 350px;
+}
+
+#display-container {
+  background-color: #bb66bb;
+  color: #ffffff;
+  width: 300px;
+}
+
+#item-object {
+  background-color: #6666bb;
+  color: #ffffff;
+  width: 250px;
+}

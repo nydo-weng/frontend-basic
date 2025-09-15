@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>baseic css recap</title>
+    <link href="./basic-css-recap.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>basic css recap</h1>
+    <a href="./main.html">back to main page</a>
+
+    <p>
+      CSS 布局(flex, grid), 可以应用在 html, body 或者任意容器元素上, 外部容器的布局会影响内层的布局
+    </p>
+    <p>viewport 设置, (&lt;meta name="viewport"&gt;); 这个可以控制 html/body 的渲染宽度, 让布局与设备屏幕匹配</p>
+
+    <section>
+      总结来说, window是最外层, 但不是HTML元素 <br>
+      页面布局主要作用在 &lt;html&gt;, &lt;body&gt; 以及容器元素上, 子元素的布局会受到父容器的影响<br>
+      学 flex/grid, 可以从&lt;body&gt;或者顶层容器开始练习<br>
+    </section>
+
+
+    <!--  
+    window (浏览器窗口)
+    └─ document
+      └─ <html>
+          └─ <body>
+            └─ 容器元素 (div, section...)
+                └─ 子元素 (p, img, button...)
+    -->
+
+    <div id="window-container">
+      <h2>层级结构概览</h2>
+      <h3>window 浏览器窗口</h3>
+      <p>
+        最外层是浏览器 window 对象, 这是一个 JavaScript 对象, 代表浏览器窗口,
+        可以通过 window.innerWidth / innerHeight 获取尺寸
+      </p>
+      <p>这不是一个 HTML 元素, 但他是页面布局的最外层"容器"</p>
+      <div id="document-container">
+        <h3>document 整个 html 文档</h2>
+        <p>document, 整个 html 文档, 代表页面 dom 树的根节点, root</p>
+        <p>可以通过 document.documentElement 访问 &lt;html&gt; 元素</p>
+        <div id="html-container">
+          <h3>html 文档的根元素</h3>
+          <p>可以设置height:100%, display:flex 等布局属性</p>
+          <p>常用作 <b>全局布局容器</b></p>
+          <div id="head-container">
+            <h3>head 文档头部</h3>
+            <p>包含文档的元数据, 如 title, meta, link 等</p>
+            <p>常用作 <b>全局样式和元数据容器</b></p>
+          </div>
+          <div id="body-container">
+            <h3>body 文档主体</h3>
+            <p>页面可见内容的容器</p>
+            <p>可以设置背景, flex/grid布局, margin/padding等</p>
+            <div id="display-container">
+              <p>页面内部的 div, section, header, main, footer 等元素</p>
+              <p>flex, grid, float 等布局大多作用在这些元素上</p>
+              <div id="item-object">
+                <p>页面内部的 p, img, button 等元素</p>
+                <p>通过 css 可以控制它们在父容器里的排列和大小</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

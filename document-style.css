@@ -1,0 +1,29 @@
+html {
+  background-color: red;
+}
+
+body {
+  /* 强制文档体永远保持 600 像素宽 */
+  width: 600px; 
+  /* 上下为 0, 左右居中 */
+  margin: 0 auto;
+  /* 背景颜色 */
+  background-color: #ff9500;
+  /* 内边距 上 0, 右 20, 下 20, 左 20 */  
+  padding: 0 20px 20px 20px;
+  /* 边框 5px 黑色 */
+  border: 5px solid black;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  color: #00539f;
+  text-shadow: 13px 13px 5px black;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  width: 200px
+}
