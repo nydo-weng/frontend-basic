@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Form and Button</title>
+  </head>
+  <body>
+    <!-- 
+    - 理解表单和按钮是用户与网站交互的主要工具，与链接一起构成了用户操作网页的基本方式。
+    - 了解不同类型的按钮。
+    - 掌握常见的 <input> 类型。
+    - 掌握常见属性，如 name 和 value。
+    - 了解 <form> 元素，以及表单提交的基础知识。
+    - 通过标签和正确的语义使表单具备无障碍性。
+    - 其他控件类型：<textarea>、<select> 和 <option>。
+    - 客户端验证的基础知识。 
+    -->
+    <h1>Form and Button</h1>
+    <a href="./learn-html.html">back to learn html</a>
+
+    <p>
+      按钮通常是通过 HTML 的 &lt;button&gt; 元素来创建的。 有时也会通过
+      &lt;input&gt; 元素并把它的 type 属性设置为 button 或者 submit 值
+    </p>
+    <p>
+      表单是通过 &lt;form&gt; &lt;label&gt; &lt;input&gt; &lt;select&gt;
+      等元素一起创建的, 与简单的按钮相比, 表单元素可以创建更复杂的空间,
+      比如包含多个选项的下拉菜单, 允许用户在不同的用户界面主题之间进行选择
+    </p>
+
+    <button>点击我</button>
+    <button>点击我</button>
+
+    <p>一个基础的表单包含以下部分:</p>
+    <form style="border: 1px solid black; padding: 10px; margin: 10px">
+      <p>
+        <ol>
+          <li>
+            一个&lt;form&gt; 标签, 用于包裹表单的所有内容. <br />
+            所有包含在&lt;form&gt;标签中的表单控件都属于同一个表单, 他们的数据会在表单提交时一起发送 <br />
+          </li>
+          <li>
+            一对或多对 &lt;label&gt; 元素 和 表单控件元素(通常是&lt;input&gt;标签, 但也有其他类型, 例如&lt;select&gt;)
+            <br />
+            <ul>
+              <li>表单控件元素允许用户选择或输入一些数据, 这些数据将在表单提交时发送到服务器.</li>
+              <li>&lt;label&gt; 元素为表单控件提供一个标识标签, 用于描述应在控件中输入的数据内容</li>
+            </ul>
+          </li>
+          <li>
+            一个&lt;button&gt; 元素, 用于提交表单.
+          </li>
+        </ol>
+      </p>
+    </form>
+
+    <!-- 
+    action 包含一个路径, 的含义是 表单提交时 数据要发送到的 目标地址(URL)
+    e.g. 如果 action = "./submit_page" -> 表单数据会提交到当前目录下的 submit_page 页面
+    如果不写 action 的话, 会默认提交到当前页面
+
+    method 的含义是 表单提交时 数据的传输方式 (HTTP 方法)
+    常见取值有 
+    1. get, 
+      - 数据拼接在 URL 上 (作为查询参数)
+      - 提交后浏览器地址会变成
+      /submit_page?username=Tom&age=20
+      特点: 简单, 可分享, 会被浏览器缓存
+      缺点: 安全性差 
+    2. post
+     - 数据放在请求体(body)里面, 而不是 URL
+     - 提交以后地址不会暴露数据
+     特点: 更加安全, 能够传输大量数据 (文件上传等)
+     缺点: 不能够想 URL 那样直接收藏
+    -->
+    <form style="border: 1px solid black; padding: 10px; margin: 10px"
+      action="./submit_page" method="get">
+      <h2>示例表单</h2>
+      <!-- 
+      required 属性标识该字段必须填写 不能为空 
+      如果用户什么都没有输入就点 提交
+      - 浏览器会自动拦截, 不会提交表单
+      - 会提示一条信息, 比如 chrome 会显示 "please fill out this field"
+      
+      表单内的元素被我分别放在两个 <p> tag 中, 因为 label, input 元素是行内元素, 如果不放在 <p> tag 中, 就会导致所有元素都显示在同一行, 可以使用 <div>, <secgtion> 甚至是 <li>.
+      -->
+      <p> 
+        <!--
+        这里的 for 对应的是 下面的 id 属性, 而不是 name.
+        这样点击对应的 lable 也会聚焦到对应的输入框
+        另外一个方法是,
+        把 input 放到 label 里面, 这样就不需要 for 和 id 了
+        -->
+        <label for="name">姓名 (必填): </label>
+        <!-- 
+        type: 指定要创建的表单空间类型, 有简单的文本字段, 也有单选按钮, 复选框等等
+        name: 为该数据指定一个名称, 当表单提交时, 数据会以 名值对 的形式发送, name 属性就是这个数据项的名称, 而用户输入的值就是这个数据项的值
+        id: 元素 id
+        required: 指定该表单控件在提交表单前必须填写.
+        -->
+        <input type="text" id="name" name="name" value="b1b" required />
+      </p>
+      <p>
+        <label for="email">邮箱 (必填): </label>
+        <input type="email" name="email" id="email" required />
+      </p>
+      <p>
+        <!-- 
+        当 button 元素被放置在 form 元素中时, 默认行为是提交表单, 通过 type 属性还可以指定行为的其他按钮
+        - type = "submit" 提交表单, 明确声明该按钮是 "提交按钮", 一般来说不用显示声明, 除非 form 中包含了多个按钮, 并且项明确声明哪一个按钮是用于提交表单的.
+        - type = "reset", 创建一个重置按钮, 这会立即清空表单中输入的所有内容, 让表单回复到初始状态 (不建议使用重置按钮) 重置的时候, value 内的内容会作为重置后的内容
+        - type = "button", 创建一个普通按钮, 他的行为和 form 外的按钮一样, 默认什么都不做, 用 javascript 来给它们添加功能
+        -->
+        <button>订阅新闻简报</button>
+        <button type="reset">重置</button>
+      </p>
+    </form>
+
+    <form style="border: 1px solid black; padding: 10px; margin: 10px; background-color: #dddddd;" action="./payment_page" method="get">
+      <h2>报名参加见面会</h2>
+      <fieldset>
+        <legend>选择酒店房型: </legend>
+        <!--
+        radio 单选按钮, 每一组 radio 按钮的 name 属性 必须相同, 才可以关联成一组
+        每个单选按钮 必须 包含一个 value 属性, 用于指定提交时该按钮对应的值, 提交的数据是一个 键值对, 这里比如 hotel=economy
+        -->
+        <div>
+          <input type="radio" id="hotelChoice1" name="hotel" value="economy" checked>
+          <label for="hotelChoice1">经济型 (+$0)</label>
+
+          <input type="radio" id="hotelChoice2" name="hotel" value="superior">
+          <label for="hotelChoice2">高级型 (+$50)</label>
+
+          <input type="radio" id="hotelChoice3" name="hotel" value="penthose" disabled>
+          <label for="hotelChoice3">顶级套房 (+$150)</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>要参加的课程: </legend>
+        <div>
+          <input type="checkbox" id="yoga" name="yoga" />
+          <label for="yoga">瑜伽 (+$10)</label>
+
+          <input type="checkbox" id="coffee" name="coffee" />
+          <label for="coffee">咖啡烘焙 (+$20)</label>
+
+          <input type="checkbox" id="balloon" name="balloon" />
+          <label for="balloon">气球动物艺术 (+$5)</label>
+        </div>
+      </fieldset>
+
+      <p>
+        <label for="transport">出行方式: </label>
+        <select name="transport" id="transport">
+          <option value="">--请选择一项--</option>
+          <option value="plane">乘坐飞机</option>
+          <option value="bike">骑自行车</option>
+          <option value="walk">徒步</option>
+          <option value="bus">乘坐公交车</option>
+          <option value="train">搭乘火车</option>
+          <option value="jetPack">使用喷气背包</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="comments">其他备注: </label>
+        <textarea id="comments" name="comments" rows="5" cols="33"></textarea>
+      </p>
+
+      <p>
+        <button>去结账</button>
+      </p>
+    </form>
+    <script>
+      /* 这里的document.querySelector这个方法只会选择第一个匹配的元素, 所以也就是页面中的第一个按钮, 第二个按钮没有被绑定上事件监听器
+
+      事件移除的时候, onclick 想移除只能写 btn.onclick = null, 不灵活
+      addEventListener 可以用 removeEventListener 精确移除某个函数
+
+      onclick 是最原始的方式, 所有浏览器都支持
+      addEventListener 是更加现代的标准方法, IE9+ 支持
+      
+      解决这个问题方法有:
+      1. 用 querySelectorAll
+
+      <fieldset>
+        <legend>选择见面会时间: </legend>
+        <div>
+          <input type="radio" id="meetingTime1" name="meetingTime" value="10:00" checked>
+          <label for="meetingTime1">10:00</label>
+        </div>
+      </fieldset>
+      2. 用 for 循环
+      3. 用 forEach 循环
+      4. 事件委托 
+      等等
+
+      简单场景中用 onclick,
+      实际开发, 复杂场景用 addEventListener
+       */
+      const btn = document.querySelector("button");
+      /* 这里还可以用 onclick, 区别是 addEventListener 可以添加多个事件处理程序, 而 onclick 只能添加一个, 就是说后面添加 onclick 的话会覆盖前面 */
+      btn.addEventListener("click", () => {
+        btn.textContent = "你已经点击过我啦!";
+        // setTimeout(() => {
+        //   btn.textContent = "点击我!";
+        // }, 1000);
+      });
+
+      btn.addEventListener("click", () => {
+        // btn.textContent = "你已经点击过我啦!";
+        setTimeout(() => {
+          btn.textContent = "点击我!";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
