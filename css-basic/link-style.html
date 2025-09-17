@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>样式化链接</title>
+  </head>
+  <body>
+    <a href="./css-start.html">back to css start</a>
+    <hr />
+
+    <p><a href="#">一个简单的链接</a></p>
+
+    <nav class="container">
+      <a href="#">主页</a>
+      <a href="#">披萨</a>
+      <a href="#">音乐</a>
+      <a href="#">袋熊</a>
+      <a href="#">芬兰</a>
+    </nav>
+
+    <style>
+      body {
+        width: 300px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+        font-family: sans-serif;
+      }
+
+      p {
+        line-height: 1.4;
+      }
+
+      a {
+        outline-color: transparent;
+      }
+
+      a:link {
+        color: #6900ff;
+      }
+
+      a:visited {
+        color: #a5c300;
+      }
+
+      a:focus {
+        text-decoration: none;
+        background: #bae498;
+      }
+
+      a:hover {
+        text-decoration: none;
+        background: #cdfeaa;
+      }
+
+      a:active {
+        background: #6900ff;
+        color: #cdfeaa;
+      }
+      /* 一下是变链接为按钮的样式 */
+
+      .container {
+        display: flex;
+        gap: 0.625%;
+      }
+
+      a {
+        flex: 1;
+        text-decoration: none;
+        outline-color: transparent;
+        text-align: center;
+        line-height: 3;
+        color: black;
+      }
+
+      a:link,
+      a:visited,
+      a:focus {
+        background: palegoldenrod;
+        color: black;
+      }
+
+      a:hover {
+        background: orange;
+      }
+
+      a:active {
+        background: darkred;
+        color: white;
+      }
+    </style>
+  </body>
+</html>

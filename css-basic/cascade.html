@@ -39,7 +39,44 @@
     <p>比如, color 和 font-family 是可以被继承的, 每个在里面的元素也都会用相同的属性, 除非直接在元素上设置属性</p>
     <span>body 设置所有字默认 cyan, 但是这个 span 是 purple</span>
     <p>还有一些属性是不能继承的, 比如在一个元素上设置 width=50%, 左右的后代不会是父元素宽度的 50%, 如果这个也继承 css 就会很难用了</p>
+
+    <img
+      alt="star"
+      src="https://mdn.github.io/shared-assets/images/examples/big-star.png" 
+    >
+
+    <div class="wrapper">
+      <div class="box"></div>
+      <div class="box">
+        These boxes both have a height set, this box has content in it which will
+        need more space than the assigned height, and so we get overflow.
+      </div>
+    </div>
+
     <style>
+
+      body {
+        font: 1.2em sans-serif;
+      }
+      .wrapper {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .wrapper > * {
+        margin: 20px;
+      }
+
+      .box {
+        border: 5px solid darkblue;
+        min-height: 100px;
+        width: 200px;
+      }
+
+      img {
+        border: 5px solid darkblue;
+      }
+
       body {
         color: cyan;
         background-color: #bbbbbb;
