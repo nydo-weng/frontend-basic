@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>层叠, 优先级与继承</title>
+  </head>
+  <body>
+    <a href="./css-start.html">back to css start</a>
+    <hr />
+
+    <h1>层叠, 优先级与继承</h1>
+    <p>
+      CSS 代表层叠样式表 (cascading style sheets), 理解第一个词, 层叠 很重要,
+      层叠的表现方式是理解 CSS 的关键.
+    </p>
+
+    <p>
+      在某些时候，在做一个项目过程中你会发现一些应该产生效果的样式没有生效。通常的原因是你创建了两个应用于同一个元素的规则。与层叠密切相关的概念是优先级（specificity），决定在发生冲突的时候应该使用哪条规则。设计元素样式的规则可能不是期望的规则，因此需要了解这些机制是如何工作的。
+    </p>
+
+    <p style="background-color: #ff66ff">
+      这里也有<strong>继承</strong>的概念，也就是在默认情况下，一些 css
+      属性继承当前元素的父元素上设置的值，有些则不继承。这也可能导致一些和期望不同的结果。
+    </p>
+
+    <h2>层叠</h2>
+    <p>
+      样式表层叠, 简单的说, 就是 CSS 规则的顺序很重要;
+      当应用两条同级别的规则到一个元素的时候, 写在后面的就是实际使用的规则.
+    </p>
+    <h3>先红, 后蓝, 所以我是蓝色的</h1>
+    <h2>优先级</h2>
+    <h3 class="main-heading">
+      先 class, 然后红, 后蓝, 但是我有 class, class 的优先级更高, 所以我是黄色的
+
+    <h2>继承</h2>
+    <p>有一些设置在父元素上的 CSS 属性是可以被子元素集成的, 有些则不能</p>
+    <p>比如, color 和 font-family 是可以被继承的, 每个在里面的元素也都会用相同的属性, 除非直接在元素上设置属性</p>
+    <span>body 设置所有字默认 cyan, 但是这个 span 是 purple</span>
+    <p>还有一些属性是不能继承的, 比如在一个元素上设置 width=50%, 左右的后代不会是父元素宽度的 50%, 如果这个也继承 css 就会很难用了</p>
+    <style>
+      body {
+        color: cyan;
+        background-color: #bbbbbb;
+      }
+
+      span {
+        color: purple;
+      }
+
+      .main-heading {
+        color: yellow;
+      }
+
+      h3 {
+        color: red;
+      }
+
+      h3 {
+        color: blue;
+      }
+    </style>
+  </body>
+</html>
