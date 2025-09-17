@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>盒模型</title>
+  </head>
+  <body>
+    <a href="./css-start.html">back to css start</a>
+    <hr />
+
+    <h1>盒模型</h1>
+    <p>组成一个区块盒子需要 <br>
+      - 内容盒子, 显示内容的区域, 用 inline-size 和 block-size 或者 width 和 height 等属性来确定其大小 <br>
+      - 内边距盒子, 内容盒子周围的填充空白, 使用 padding 和相关属性控制大小<br>
+      - 边框盒子, 边框盒子包裹住内容和填充, 使用 border 和相关属性控制大小<br>
+      - 外边距盒子, 外边距是最外层, 包裹内容, 内边距和边框, 作为盒子和其他元素之间的空白, 使用 margin 和相关属性来控制大小
+    </p>
+    <p>浏览器默认使用标准盒模型, content-box,<br>
+    在这种模型下, width 和 height 只控制 内容盒子, content 区域, 不包括内容填充和 boder 边框, 让样式调整不直观, 需要计算</p>
+    <p>可以使用 CSS 替代盒模型, 设置 box-sizing: border-box, 让 width 和 height 控制 内容盒子+内边距+边框, 这样样式调整非常直观 无需计算, padding 和 border 会自动挤压内容, 这也是推荐做法.</p>
+    <p>好处:
+      <ol>
+        <li>布局更加直观, 写的 width, height 就是盒子的最终大小</li>
+        <li>避免计算麻烦, 不用手算 padding, border</li>
+        <li>响应式更加友好, 特别是在 felx 或者 grid 里, 元素不会超出预期</li>
+        <li>现代实践中, 几乎所有项目都会加上这段 reset: <br> 
+          <code>* 
+            { <br>
+              &nbsp;&nbsp;box-sizing: border-box; <br>
+            } <br>
+          </code>
+          或者更专业的是在 &lt;html&gt; 元素上设置: <br>
+          <pre style="background-color: #ffffbb;">
+            <code>
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+            </code>
+          </pre>
+        </li>
+      </ol>
+    </p>
+    <div style="display: flex; flex-direction: row;">
+      <div style="background-color: #ffffbb; flex: 1; padding: 10px;">
+        <h2>外部显示类型</h2>
+        <p>一个拥有 <span style="background-color: grey">block</span> 外部显示类型的盒子会表现出以下行为: 
+          <ul>
+            <li>盒子会产生换行</li>
+            <li>width 和 height 属性可以发挥作用</li>
+            <li>内边距, 外边距和边框会将其他元素从当前盒子周围"推开"</li>
+            <li>如果未指定 width, 方框将沿 行向扩展, 填充它的容器中的可用空间. 绝大多数情况下, 盒子会变得和它的容器一样宽, 占据可用空间的 100%</li>
+          </ul>
+          某些 HTML 元素, 比如 &lt;h1&gt; 和 &lt;p&gt;, 默认使用 block 作为外部显示类型.
+        </p>
+        <p>
+          一个拥有 <span style="background-color: grey">inline</span> 外部显示类型的盒子会表现出以下行为:
+          <ul>
+            <li>盒子不会产生换行.</li>
+            <li>widith 和 height 属性将不起作用</li>
+            <li>垂直方向的内边距, 外边距以及边框会被应用, 但是不会把其它处于 inline 状态的盒子推开</li>
+            <li>水平方向的内边距, 外边距以及边框会被应用, 而且会把其它处于 inline 状态的盒子推开</li>
+          </ul>
+          某些 HTML 元素, 如 &lt;a&gt;, &lt;span&gt;, &lt;em&gt; 以及 &lt;strong&gt;, 默认使用 inline 作为内部显示类型
+        </p>
+
+        <span style="background-color: red; margin-right: 30px;">这是一个 span 元素, 右边距 30, 推开右边元素</span>
+        <span style="background-color: green">这是一个 span 元素</span>
+        <br />
+        <span style="background-color: blue; margin-top: 5px;">这是一个 span 元素, 上边距 5, 但是无效果, 因为上方也是 inline 元素</span>
+        <br>
+        <span style="background-color: pink; margin-top: 5px; display: block;">这是一个 span 元素, 但是改成 display:block, 上边距 5, 有效果, 因为自己是 block 元素</span>
+        <br>
+        <span style="background-color: cyan; margin-top: 100px;">这是一个 span 元素, 上边距 100, 无效果, 因为自己是 inline 元素, 没法把自己往下推, 并且 inline 元素上下 margin 对外部的布局是不产生影响的</span>
+      </div>
+
+      <div style="background-color: #ffbbff; flex: 1; padding: 10px;">
+        <h2>内部显示类型</h2>
+        <p>盒子还有内部显示类型, 它决定了盒子内元素的布局方式.</p>
+        <p>区块和行内布局是网络上的默认行为方式, 在默认情况下, 没有任何其他指令的话, 方框内的元素也会按照 标准流 的方式布局, 并表现为 区块 或者 行内盒子</p>
+        <p>例如, 可以通过设置 display: flex; 来更改内部显示类型, 该元素仍将使用 外部显示类型 block, 但内部显示类型将变为 flex. 该方框的任何<strong>直接子代</strong>都将成为<strong>弹性(flex)项</strong>, 并按照弹性盒子规范执行</p>
+      </div>
+    </div>
+
+    <div class="box">I use the standard box model.</div>
+    <div class="box alternate">I use the alternate box model.</div>
+    <style>
+      .box {
+        border: 5px solid rebeccapurple;
+        background-color: lightgray;
+        padding: 40px;
+        margin: 40px;
+        width: 300px;
+        height: 150px;
+      }
+
+      .alternate {
+        box-sizing: border-box;
+        width: 390px;
+        height: 240px;
+      }
+    </style>
+  </body>
+</html>
+
+  </body>
+</html>

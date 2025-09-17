@@ -1,0 +1,54 @@
+h1 {
+  color: red;
+}
+
+p, li {
+  color: green
+}
+
+li {
+  list-style-type: none;
+}
+
+li.special {
+  color: orange;
+  font-weight: bold;
+}
+
+/* 选择 li 内部的 任何 em 元素
+包含选择符 */
+li em {
+  color: rebeccapurple;
+}
+
+/* h1 后面的第一个 p 元素, 
+相邻选择符 */
+h1 + p {
+  background-color: yellow;
+}
+
+a:link {
+  color: pink;
+}
+
+a:visited {
+  color: cyan;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+body h1 + p .special {
+  color: yellow;
+  background-color: black;
+  padding: 5px;
+}
+
+a[title] {
+  color: purple;
+}
+
+a[href="the_value.com"] {
+  color: red;
+}
