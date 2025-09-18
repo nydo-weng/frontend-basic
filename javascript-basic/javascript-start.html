@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>介绍 JavaScript 基础</title>
+  </head>
+  <body>
+    <a href="../main.html">back to main</a>
+    <hr />
+    <h1>介绍 JavaScript 基础</h1>
+    <h2>高层定义</h2>
+    <p>
+      JavaScript 是一种脚本编程语言, 它可以在网页上实现复杂的功能,
+      网页展现给你的不再是简单的静态信息, 而是实时的内容更新 - 交互式的地图、
+      2D/3D动画、滚动播放的视频等等 - JavaScript 就在其中.
+    </p>
+
+    <button type="button">Player 1: Chris</button> <br />
+
+    <a style="color: blue" href="./apply-javascript.html"> apply javascript </a>
+    <br />
+    <a style="color: blue" href="./number-guess.html"> 猜数字 </a>
+    <br />
+    <a style="color: blue" href="./debug.html"> debug javascript </a>
+    <br />
+    <a style="color: blue" href="./grid.html"> 网格 grid </a>
+
+    <style>
+      button {
+        font-family: "helvetica neue", helvetic, sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 2px solid rgb(200 200 0 / 60%);
+        background-color: rgb(0 217 217 / 60%);
+        color: rgb(100 0 0 / 100%);
+        box-shadow: 1px 1px 2px rgb(0 0 200 / 40%);
+        border-radius: 10px;
+        padding: 3px 10px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      const button = document.querySelector("button");
+
+      button.addEventListener("click", updateName);
+
+      function updateName() {
+        const name = prompt("请输入新的名字");
+        button.textContent = `Player 1: ${name}`;
+      }
+    </script>
+  </body>
+</html>
