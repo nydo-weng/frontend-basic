@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>文本处理</title>
+
+    <style></style>
+  </head>
+
+  <body>
+    <a href="./javascript-start.html">back to main</a>
+    <hr />
+    <h1>文本处理</h1>
+    <button>按这里</button>
+    <div id="greeting"></div>
+  </body>
+
+  <script>
+    const button = document.querySelector("button");
+
+    function greet() {
+      const name = prompt("你叫什么名字?");
+      const greeting = document.querySelector("#greeting");
+      greeting.textContent = `你好, ${name}! 很高兴见到你`;
+    }
+
+    button.addEventListener("click", greet);
+
+    let browserType = "mozilla";
+    console.log(browserType.length);
+    console.log(browserType[0]);
+    console.log(browserType[browserType.length - 1]);
+
+    // 在字符串中找 子字符串, 这里是 2, 因为 z 在 0 1 2, 2 的位置
+    console.log(browserType.indexOf("zilla"));
+
+    console.log(browserType.indexOf("vailla")); // -1, 因为 vailla 不在 browserType 中
+
+    console.log(browserType.slice(0, 3)); // 拿出从 0 到 3 的字符串不包含 3, moz
+    console.log(browserType.slice(2)); // 拿出从 2 到尾的字符串, 包含 2, zilla
+
+    console.log(browserType.replace("moz", "van")); // 把 moz 替换成 van, 返回新的字符串, 原来的字符串不变
+    console.log(browserType); // 原来的字符串不变
+    browserType = browserType.replace("moz", "van");
+    console.log(browserType); // 原来的字符串变了
+
+    console.log(browserType.replace("l", "_")); // 只替换一个
+    console.log(browserType.replaceAll("l", "_")); // 全替换
+  </script>
+</html>

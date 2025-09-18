@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>数组</title>
+
+    <style></style>
+  </head>
+
+  <body>
+    <a href="./javascript-start.html">back to main</a>
+    <hr />
+    <h1>数组</h1>
+  </body>
+
+  <script>
+    const shopping = ["bread", "milk", "cheese", "hummus", "noodles"];
+    console.log(shopping);
+
+    let sequence = [1, 1, 2, 3, 5, 8, 13];
+    console.log(sequence);
+
+    let random = ["tree", 795, [0, 1, 2]];
+    console.log(random);
+
+    console.log(shopping[0]);
+
+    shopping[0] = "tahini";
+    console.log(shopping);
+
+    random[2][2] = 7;
+    console.log(random);
+
+    console.log(sequence.length);
+
+    for (let i = 0; i < sequence.length; i++) {
+      console.log(sequence[i]);
+    }
+
+    // 把字符串拆成数组, 用逗号分割
+    let myData = "Manchester,London,Liverpool,Birmingham,Leeds,Carlisle";
+    let myArray = myData.split(",");
+    console.log(myArray);
+    console.log(myArray.length);
+    console.log(myArray[0]);
+    console.log(myArray[myArray.length - 1]);
+
+    // 把数组再拼回字符串
+    let myNewString = myArray.join("|_|");
+    console.log(myNewString);
+
+    // 除了 .join 还可以用 .toString, 但是.toString 不会添加分隔符, 只会用逗号分割
+
+    let myArray2 = [
+      "Manchester",
+      "London",
+      "Liverpool",
+      "Birmingham",
+      "Leeds",
+      "Carlisle",
+    ];
+
+    myArray2.push("added");
+    console.log(myArray2);
+    console.log(myArray2.push("added2", "added3"));
+    console.log(myArray2);
+    // push 把元素加在数组的最后, 调用 push 会返回调用 push 后的长度
+
+    let removedItem = myArray2.pop();
+    console.log(removedItem);
+    console.log(myArray2);
+
+    console.log(
+      "--------------------------------using unshift and shift--------------------------------"
+    );
+    // 还有 unshift() 和 shift(), 和 push 和 pop 相反, unshift 把元素加在数组的最前面, shift 把数组最前面的元素移除
+    myArray2.unshift("shift1", "shift2");
+    console.log(myArray2);
+    let removedItem2 = myArray2.shift();
+    console.log(removedItem2);
+    console.log(myArray2);
+  </script>
+</html>
