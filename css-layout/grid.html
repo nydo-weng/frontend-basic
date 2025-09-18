@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>网格布局</title>
+  </head>
+  <body>
+    <a href="./css-layout-intro.html">back to css layout intro</a>
+    <hr />
+
+    <h1>网格布局</h1>
+    <p>
+      网格是由一系列水平及垂直的线构成的一种布局模式. 根据网格,
+      我们能够将设计元素进行排列,
+      帮助我们设计一系列具有固定位置以及宽度的元素的页面,
+      让我们的网站页面更加统一.
+    </p>
+    <p>
+      一个网格通常具有许多的列(column)和行(row), 以及行与行, 列与列之间的间隙,
+      这个间隙一般被称为沟槽(gutter).
+    </p>
+
+    <p>
+      fr 是可以用来灵活定义网格大小的单位, 这个单位表示网格容器中可用空间的一份,
+      个人理解比较类似于 flex 中的 flex: 1, flex: 2 这种
+    </p>
+
+    <div class="container">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+      <div>Six</div>
+      <div>Seven</div>
+    </div>
+
+    <style>
+      body {
+        width: 90%;
+        max-width: 900px;
+        margin: 2em auto;
+        font: 0.9em/1.2 Arial, Helvetica, sans-serif;
+      }
+
+      .container > div {
+        border-radius: 5px;
+        padding: 10px;
+        background-color: rgb(207, 232, 220);
+        border: 2px solid rgb(79, 185, 227);
+      }
+      .container {
+        display: grid;
+        /* grid-template-columns: 200px 200px 200px; */
+        /* grid-template-columns: 1fr 1fr 1fr; */
+        /* grid-template-columns: 2fr 1fr 1fr; */
+        grid-template-columns: repeat(3, 1fr);
+
+        grid-auto-rows: minmax(100px, auto);
+        /* grid-column-gap: 20px; */
+        /* grid-row-gap: 10px; */
+        grid-gap: 20px;
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>介绍 CSS 布局</title>
+  </head>
+  <body>
+    <a href="../main.html">back to main</a>
+    <hr />
+    <h1>介绍 CSS 布局</h1>
+    <div class="normal-flow-container">
+      <h2>正常布局流</h2>
+      <p>
+        正常布局流 (normal flow) 是指在不对页面进行任何布局控制时, 浏览器默认的
+        HTML 布局方式.
+      </p>
+      <p>下列布局技术会覆盖默认的布局行为:</p>
+      <ul>
+        <li>
+          display 属性 - 标准的 value, 比如 block, inline 或者 inline-block
+          元素在正常布局流中的表现形式. 接着是全新的布局方式, 通过设置 display
+          的值, 比如 CSS Grid 和 Flexbox
+        </li>
+        <li>
+          浮动 - 应用 float 值, 诸如 left 能够让会计元素互相并排成一行,
+          而不是一个堆叠在另一个上面
+        </li>
+        <li>
+          position 属性 - 允许你精准设置盒子中的盒子的位置, 正常布局流中, 默认为
+          static, 使用其他值会引起元素不同的布局方式,
+          例如将元素固定到浏览器视口的左上角
+        </li>
+        <li>
+          表格布局 - 表格的布局方式可以用在非表格内容上, 可以使用 display: table
+          和相关属性在非表元素上使用
+        </li>
+        <li>
+          多列布局 - 这个 Multi-column layout 属性可以让块按列布局,
+          比如报纸的内容就是一列一列排布的
+        </li>
+      </ul>
+    </div>
+
+    <a style="color: blue" href="./float.html"> 浮动 float </a>
+    <br />
+    <a style="color: blue" href="./position.html"> 定位 position </a>
+    <br />
+    <a style="color: blue" href="./flexbox.html"> 弹性盒子 flexbox </a>
+    <br />
+    <a style="color: blue" href="./grid.html"> 网格 grid </a>
+
+    <div class="flexbox-wrapper">
+      <div class="box1">One</div>
+      <div class="box2">Two</div>
+      <div class="box3">Three</div>
+    </div>
+    <style>
+      .flexbox-wrapper {
+        background-color: #cc3355;
+        display: flex;
+      }
+
+      .flexbox-wrapper div {
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        flex: 1;
+      }
+    </style>
+  </body>
+</html>

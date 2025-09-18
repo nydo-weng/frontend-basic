@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>定位</title>
+  </head>
+  <body>
+    <a href="./css-layout-intro.html">back to css layout intro</a>
+    <hr />
+
+    <h1>定位</h1>
+    <ul>
+      <li>
+        static:
+        <p class="static-position">
+          静态定位, 这是每个元素的默认值,
+          意味着将元素放入它在文档布局流中的正常位置
+        </p>
+      </li>
+      <li>
+        relative:
+        <p class="relative-position">
+          相对定位, 与静态定位非常的相似, 占据在正常的文档流找那个,
+          但是仍然可以修改它的最终位置
+        </p>
+      </li>
+
+      <li>
+        absolute:
+        <p class="absolute-position">
+          绝对定位, 这种元素不再存在于正常文档布局流中, 它坐在自己的层中,
+          独立于一切. 这非常有用, 意味着我们可以创建
+          不干扰页面上其他元素的位置的隔离的 UI 功能, 比如,
+          弹出信息框和控制菜单; 翻转面板; 可以在页面上的任何地方拖放的 UI
+          功能...
+        </p>
+        <p style="background-color: green">
+          如果所有父元素都没有显式地定义 position 属性,
+          那么所有的父元素默认情况下 position 属性都是 static, 结果就是,
+          绝对定位元素 会被包含在 <strong>初始块容器</strong>中,
+          这个容器有着和浏览器视口一样的尺寸, 并且 &lt;html&gt;
+          元素也被包含在这个容器里面, 简单来说就是绝对定位元素被放在
+          &lt;html&gt; 元素的外面, 并且根据浏览器视口来定位 <br />
+          但是我们可以通过改变父元素的定位属性, 来改变<strong
+            >定位上下文</strong
+          >
+          - 绝对定位元素的相对位置元素
+        </p>
+      </li>
+
+      <li>
+        z-index:
+        <p>
+          z-index 属性控制定位元素的堆叠顺序, 当元素重叠的时候, 可以使用 z-index
+          属性来控制元素的堆叠顺序, 默认情况下, 定位的元素都具有 z-index: auto,
+          实际上为0
+        </p>
+      </li>
+      <div class="fixed-position">fixed-position example</div>
+      <li>
+        fixed::
+
+        <p>
+          固定定位: 与绝对定位的工作方式完全相同,
+          唯一区别是绝对定位将元素固定在相对于其位置最近的祖先, 而
+          固定定位元素则是相对于浏览器视口本身, 这意味着可以创建固定的 有用的 UI
+          项目, 比如 持久导航菜单
+        </p>
+      </li>
+    </ul>
+
+    <p>
+      I am a basic block level element. My adjacent block level elements sit on
+      new lines below me.
+    </p>
+
+    <p>
+      By default we span 100% of the width of our parent element, and we are as
+      tall as our child content. Our total width and height is our content +
+      padding + border width/height.
+    </p>
+
+    <p>
+      We are separated by our margins. Because of margin collapsing, we are
+      separated by the width of one of our margins, not both.
+    </p>
+
+    <p>
+      inline elements <span>like this one</span> and <span>this one</span> sit
+      on the same line as one another, and adjacent text nodes, if there is
+      space on the same line. Overflowing inline elements will
+      <span
+        >wrap onto a new line if possible (like this one containing text)</span
+      >, or just go on to a new line if not, much like this image will do:
+      <img
+        src="https://mdn.github.io/shared-assets/images/examples/long.jpg"
+        alt="snippet of cloth"
+      />
+    </p>
+    <style>
+      body {
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      p {
+        background: aqua;
+        border: 3px solid blue;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      span {
+        background: red;
+        border: 1px solid black;
+      }
+
+      .static-position {
+        position: static;
+        background: yellow;
+      }
+
+      .relative-position {
+        position: relative;
+        background: pink;
+        top: 30px;
+        left: 30px;
+      }
+
+      .absolute-position {
+        position: absolute;
+        background: green;
+        top: 30px;
+        /* bottom: 0; */
+        left: 30px;
+        /* right: 0; */
+        /* margin: 0; */
+      }
+
+      body {
+        /* position: relative; */
+        width: 500px;
+        height: 2000px;
+        margin: 0 auto;
+        background-color: #ccc;
+      }
+
+      .fixed-position {
+        position: fixed;
+        background: orange;
+        top: 20px;
+        width: 500px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding: 10px;
+        /* left: 0; */
+      }
+    </style>
+  </body>
+</html>
