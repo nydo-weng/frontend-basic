@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>客户端框架介绍</title>
+
+    <style></style>
+  </head>
+
+  <body>
+    <a href="./js-framework-start.html">back to main</a>
+    <hr />
+    <h1>客户端框架介绍</h1>
+    <div style="border: 1px solid black; padding: 10px">
+      <h2>有哪些框架?</h2>
+      <p>目前公认的四大框架</p>
+      <h3>Ember</h3>
+      <p>
+        老框架, 用户勺, 但稳定, 社区支持以及编程原则良好, 所以知名度还是比较高
+      </p>
+      <h3>Angular</h3>
+      <p>基于组件的框架, 声明式的HTML模版.</p>
+      <h3>Vue</h3>
+      <p>
+        在学习 AngularJS 源码后, Evan You 尤雨溪 在 2014 年发布了 Vue,
+        这是四大框架中最年轻的.
+      </p>
+      <h3>React</h3>
+      <p>
+        Facebook 在 2013 发布了 React. 严格来说 React 本身不是一个框架,
+        而是一个用来渲染用户界面组件的库.React 被用来组合其他用来构建应用的库
+        --- React + React Native 让开发者能够用 JavaScript 构建移动应用; React +
+        ReactDOM 能够用来制作 web 应用程序等.
+      </p>
+      <p>
+        因为 React 和 ReactDOM 被经常放在一起使用, 通俗的讲, React
+        可以被理解为是一个 JavaScript 框架. React 用类似 HTML 的语法的 JSX
+        拓展了 JavaScript.
+      </p>
+    </div>
+
+    <div style="border: 1px solid black; padding: 10px">
+      <h2>框架提供的功能</h2>
+      <p>目前公认的四大框架</p>
+      <h3>工具</h3>
+      <p>
+        每个框架都有大而活跃的社区, 每个框架体系都提供了工具来改善开发体验,
+        比如添加测试和 linting 工具.
+      </p>
+      <h3>组件化</h3>
+      <p>
+        大多数框架都鼓励开发者将用户界面的不同部分抽象为组件 components ---
+        可维护, 可重用而且可以相互通信的代码块.
+        与给定组件相关的所有代码都可以存在于一个文件或几个特定文件中,
+        就可以轻松的知道去哪里修改目标组件.
+      </p>
+      <h3>路由</h3>
+      <p>
+        web 重要的一个特点就是它允许用户从一个页面导航到另一个页面 --- 毕竟,
+        它是一个相互连接的文档网络. 当点击网站上的连接时,
+        浏览器会和目标服务器通信, 获取新内容之后显示给用户.
+        当浏览器这样做的时候, 地址栏中的 URL 会发生变化, 可以记下来这个 URL
+        稍后返回这个页面或者把这个 URL 分享给其他人, 以便他们轻松找到相同的页面.
+        浏览器也会记住导航历史记录, 允许来回当行. 这被称为
+        <strong>服务端路由</strong>.
+      </p>
+      <p>
+        现代 web 应用程序通常不会获取和渲染新的 HTML 文件 --- 他们加载单个 HTML
+        shell, 并且不断更新其中的 DOM 而无需将用户导航到 web 上的新地址.
+        这被称为 <strong>单页应用程序(single page app) 或 SPA</strong>.
+        每个新的伪网页通常称为一个 view, 且在默认情况下, 不会做任何路由.
+      </p>
+      <p>
+        当 SPA 足够复杂并呈现足够多的独特视图时, 将路由功能引入应用程序非常重要.
+        人们习惯于能链接到应用程序中的特定页面, 在他们的浏览器中前进和后退等等,
+        当这些 web 功能被破坏的时候, 他们的体验也会收到影响, 这被称为
+        <strong>客户端路由</strong>.
+      </p>
+      <p>
+        可以用 JS 和浏览器的原生功能来实现路由功能, 但是流行的,
+        活跃开发的框架具有配套的库, 使路由功能在开发过程中更加直观.
+      </p>
+    </div>
+
+    <script></script>
+  </body>
+</html>
