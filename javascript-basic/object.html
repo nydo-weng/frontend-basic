@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>object 对象</title>
+
+    <style></style>
+  </head>
+
+  <body>
+    <a href="./javascript-start.html">back to main</a>
+    <hr />
+    <h1>object 对象</h1>
+
+    <p>
+      对象 是一个包含相关数据和方法的集合 (通常由一些变量和函数组成,
+      我们称之为对象里面的属性和方法)
+    </p>
+    <p>
+      一个对象由许多的成员组成, 每一个成员都拥有一个名字和一个值,
+      每一组对象/值必须由逗号分割开.
+    </p>
+    <p>
+      对象成员的值可以是任意的, 数据项被称为对象的属性, 函数被称为对象的方法.
+      当成员是函数时, 可以写 bio: function () {} 也可以用更简单的, bio() {}
+    </p>
+    <p>
+      手动的写出对象的内容来创建一个对象 被叫做 对象字面量(object literal), 这和
+      从类示例化一个对象是不一样的.
+    </p>
+    <p>
+      当想要传输一系列结构化的相关的数据项 (比如,
+      服务器发起请求以储存一些数据到数据库)时,
+      常见的方式是使用字面量来创建一个对象.
+      发送一个对象要比分别发送这些数据更加有效率, 当使用名字标识这些数据时,
+      会比数组更容易使用.
+    </p>
+    <h2>点表示法 dot notation,</h2>
+    <p>
+      用来访问对象的属性和方法, 对象的名字表现为一个命名空间 namespace.
+      命名空间在第一位, 然后输入一个点, 紧接着就是想要访问的目标
+    </p>
+    <h2>括号表示法 bracket notation</h2>
+    <p>
+      命名空间[要访问的成员], 这样看起来很像访问一个数组的元素,
+      因此对象有时候也被称为<strong>关联数组</strong> --- 对象将字符串映射到值,
+      而数组将数字映射到值.
+    </p>
+    <p>
+      点表示法通常优于括号表示法, 因为它更简洁而且更加容易阅读,
+      但是某些情况下必须使用括号, 比如对象属性名称如果保存在变量中,
+      则不能用点表示法, 因为点表示法只能使用字面量.
+    </p>
+    <h2>this 的含义</h2>
+    <p>this 指向当前代码运行时的对象</p>
+    <h2>构造函数</h2>
+    <p>第一个版本是函数<pre><code>
+function createPerson(name){
+  const obj = {};
+  obj.name = name;
+  obj.introduceSelf = function () {
+    console.log(`你好! 我是${this.name}.`);
+  };
+  return obj;
+}
+
+</code></pre> 每次调用 createPerson() 函数时, 他都会创建并返回一个新对象. 这样可以正常工作 但是有点冗长: 我们必须创建一个空对象, 初始化它, 并且返回它. 更好的方法是使用<strong>构造函数</strong>. 构造函数只是使用 new 关键字调用的函数, 当调用构造函数时, 它会 <ul>
+  <li>创建一个新对象</li>
+  <li>将 this 绑定到新对象, 以便你可以在构造函数代码中引用 this</li>
+  <li>运行构造函数中的代码</li>
+  <li>返回新对象</li>
+</ul>按照惯例, 构造函数要以 大写字母 作为开头, 并且以他们创建的对象类型为命名.
+<pre><code>
+funxtion Person(name) {
+  this.name = name;
+  this.introduceSelf = function () {
+    console.log(`你好! 我是 ${this.name}.`);
+  };
+}
+</code></pre>要将 Person() 作为构造函数调用, 使用 new <pre><code>
+const myPerson = new Person("Bob");
+myPerson.name;
+myPerson.introduceSelf();
+</code></pre></p>
+  </body>
+
+  <script>
+    const person = {
+      name: ["Bob", "Smith"],
+      age: 32,
+      bio: function () {
+        console.log(`${this.name[0]} ${this.name[1]} 现在 ${this.age} 岁了.`);
+      },
+      introduceSelf: function () {
+        console.log(`你好, 我是 ${this.name[0]}.`);
+      },
+    };
+  </script>
+</html>
