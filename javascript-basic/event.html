@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>事件 event</title>
+    <style></style>
+  </head>
+  <body>
+    <a href="./javascript-start.html">back to main</a>
+    <hr />
+    <h1>事件 event</h1>
+
+    <p>
+      事件是发生在正在编程的系统中的事情 --- 当事件发生事, 系统产生(或者触发)
+      某种信号, 并提供一种机制, 当事件发生时, 可以自动采取某种行动
+      (也就是运行一些代码). 事件是在浏览器窗口内触发的,
+      并且倾向于附加到驻留在其中的特定项目. 这可能是一个单一的元素, 一组元素,
+      当前标签中加载的 html 文档, 或者整个浏览器窗口.
+      有许多不同类型的事件可以发生.
+    </p>
+    <ul>
+      例如:
+      <li>用户选择, 点击 或者 将光标 悬停在某一元素上</li>
+      <li>用户在键盘按下某个按键</li>
+      <li>用户调整浏览器窗口的大小或者关闭浏览器窗口</li>
+      <li>网页结束加载</li>
+      <li>表单提交</li>
+      <li>视频播放, 暂停或结束</li>
+      <li>发生错误</li>
+    </ul>
+    <p>有<strong>相当多</strong>的事件可以触发</p>
+
+    <p>
+      为了对一个事件做出反应, 需要给它附加一个<strong>事件处理器</strong>.
+      这是一个代码块(通常是作为程序员创建的一个 JavaScript 函数),
+      在事件发生时运行. 当这样一个代码块被定义为响应一个时间而运行时,
+      我们说我们在<strong>注册一个事件处理器</strong>. 注意,
+      事件处理器有时候也被叫做<strong>事件监听器</strong> --- 从我们的用意来看,
+      这两个名字是相同的, 但是严格来说,这块代码既监听也处理事件. 监听器
+      留意事件是否发生, 处理器 对事件发生做出回应.
+    </p>
+
+    <h2>移除监听器</h2>
+    <p>
+      如果这个事件作为函数被注册, 可以直接使用 btn.removeEventListener("click",
+      函数名) 来移除, 如果直接只作为匿名函数传递的话, 可以用以下方法, 略微复杂
+    </p>
+    <p>
+      通过传递 AbortSignal 到 addEventListener(), 然后在拥有 AbortSignal
+      的控制器上调用 abort(), 从而删除事件处理器. 看源码注释 ->
+    </p>
+
+    <h2>其他时间监听器机制</h2>
+    <h3>事件处理器属性</h3>
+    <p>
+      推荐的是 addEventListener, 但也可以用事件处理器属性, 可以触发事件的对象,
+      通常也有属性, on 后跟时间名称, 比如 onclick, 可以通过给该属性赋值,
+      来注册事件处理, 比如 btn=?, 这里可以是匿名函数也可以是具名函数.
+      但是对于事件处理器属性, 不能为一个事件提那几一个以上的处理程序,
+      后续尝试会覆盖前面的属性
+    </p>
+
+    <h3>内联时间处理器 --- 不要使用</h3>
+    <p>不推荐, 不要使用</p>
+    <p>这个直接在 html 中通过修改事件处理器属性, 来绑定事件,</p>
+    <button>改变颜色</button>
+
+    <hr />
+    <h2>事件对象</h2>
+    <button class="event-object-btn">事件对象按钮</button>
+    <p>
+      在有些事件处理函数内部, 会有一个固定指定名称的参数. 例如 event, evt 或者
+      e. 这被称为<strong>事件对象</strong>, 它被自动传递给事件处理函数,
+      用来提供额外的功能和信息. e.target 是事件刚刚发生的元素的引用
+    </p>
+    <script>
+      const btn = document.querySelector("button");
+
+      function random(number) {
+        return Math.floor(Math.random() * (number + 1));
+      }
+
+      // function changeBackground() {
+      //   const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+      //   document.body.style.backgroundColor = rndCol;
+      // }
+      // /* click - 点击事件
+      // focus - 聚焦到本元素
+      // blur - 聚焦后失去焦点
+      // dblclick - 双击
+      // mouseover - 鼠标指针在按钮上悬停
+      // mouseout - 指针移出按钮 */
+      // btn.addEventListener("click", changeBackground);
+
+      // btn.removeEventListener("click", changeBackground);
+
+      const controller = new AbortController();
+
+      btn.addEventListener(
+        "click",
+        () => {
+          const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+          document.body.style.backgroundColor = rndCol;
+        },
+        // 给处理器传递 abort signal
+        { signal: controller.signal }
+      );
+
+      // 移除所有和这个处理器相关的事件处理器
+      controller.abort();
+
+      const eventObjectBtn = document.querySelector(".event-object-btn");
+
+      function bgChange(e) {
+        const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+        e.target.style.backgroundColor = rndCol;
+        console.log(e);
+      }
+
+      eventObjectBtn.addEventListener("click", bgChange);
+    </script>
+  </body>
+</html>

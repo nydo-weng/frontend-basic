@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Function start</title>
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        background: #eee;
+      }
+
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+      }
+
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./javascript-start.html">back to main</a>
+    <hr />
+    <button>Display message box</button>
+    <p>
+      有个重点是, 把函数作为参数传递时, 不能加 括号(), 否则会直接执行函数;
+      需要传入参数时, 通过匿名函数, 还有别的方法, 比如 bind
+    </p>
+
+    <script>
+      function displayMessage(msgText, msgType) {
+        // DOM 方法, 获取元素 的 引用 保存到 常量中
+        const html = document.querySelector("html");
+
+        // DOM 方法, 创建元素, 保存引用到常量中
+        const panel = document.createElement("div");
+        // DOM 方法, 设置元素的属性
+        panel.setAttribute("class", "msgBox");
+        // DOM 方法, 把元素添加到页面中
+        html.appendChild(panel);
+
+        const msg = document.createElement("p");
+        msg.textContent = msgText;
+        panel.appendChild(msg);
+
+        const closeBtn = document.createElement("button");
+        closeBtn.textContent = "x";
+        panel.appendChild(closeBtn);
+
+        closeBtn.onclick = function () {
+          panel.parentNode.removeChild(panel);
+        };
+
+        if (msgType === "warning") {
+          msg.style.background = "red";
+        } else if (msgType === "chat") {
+          msg.style.background = "aqua";
+        } else {
+          msg.style.background = "#ccc";
+        }
+      }
+
+      const btn = document.querySelector("button");
+      btn.onclick = function () {
+        // displayMessage("Woo, this is a different message!");
+        // displayMessage("Woo, this is a different message!", "warning");
+        displayMessage("Woo, this is a different message!", "chat");
+      };
+    </script>
+  </body>
+</html>
