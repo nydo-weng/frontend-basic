@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>React Todo</title>
+  </head>
+  <body>
+    <a href="./react-intro.html">back to react intro</a>
+    <hr />
+    <h1>React Todo</h1>
+    <h2>定义第一个组件</h2>
+    <p>在缺乏经验的情况相爱, 定义一个组件会比较棘手, 这里有些提示
+      <ul>
+        <li>如果它在程序里看起来是个明显的"块", 它可能可以是一个组件</li>
+        <li>如果它在程序里经常被复用, 那它可能可以是个组件</li>
+      </ul>
+      第二条很有价值: 使用通用的 UI 元素作为组件, 可通过只更改一处, 就能更改所有使用该组件的地方. 这里从 UI 中重用最多, 最重要的部分抽取为一个组件: 一个待办事项
+    </p>
+    <h2>编写 &lt;Todo /&gt;</h2>
+    <p>在制作组件之前, 应该为它新建一个文件. 实际上应该为它新建一个文件夹.</p>
+    <p>组件必须返回一些东西, 如果视图渲染一个不返回任何东西的组件, React 会在浏览器中提示出现错误.</p>
+    <h2>制作 不同的 &lt;Todo /&gt;</h2>
+    <p>组件之所以强大, 是因为它让我们可以重用 UI 的各个部分, 并让我们可以引用一处作为 UI 各个部分的源头. 但问题是, 我们通常不希望重复使用每个组件的全部内容; 我们希望重复使用大多数部分, 并改变小部分内容, 这就是 props 的用处.</p>
+    <h3>name 里有什么?</h3>
+    <p>为了跟踪我们要完成的任务名称, 我们应该确保每个 &lt;Todo /&gt; 组件渲染一个不同的名称. 在 App.js 中, 给每个 &lt;Todo /&gt; 传递一个 name prop. 然后回到 Todo.js, 修改函数定义, 允许它接受 props 参数, 如果要检查参数是否被组件正确接收, 可以console.log() 检查 props. 然后就可以用 name prop 来替换每次出现的 Eat, 在 JSX 表达式中, 用 大括号 来注入一个变量的值</p>
+    <h3>是否 completed?</h3>
+    <p>在原来的静态列表中, 只有 Eat 被选中, 现在全被选中了. 通过传递一个新的 props completed, 来控制复选框的选中状态.</p>
+    <h3>设置 id</h3>
+    <p>目前给每个任务的 id 属性都设置的 todo-0, 这是一个不好的 HTML 写法, 因为 id 属性必须是不同的, 是一个唯一标识符, 这以为这需要给每一个 todo 组件一个不同的 id prop</p>
+    <h2>目前为止, 还算不错?</h2>
+    <p>目前为止, 代码还是有些重复, 渲染 &lt;Todo /&gt; 组件的三行文字几乎是相同的, 只有一点不同, 每个 prop 的值</p>
+    <h3>任务作为数据</h3>
+    <p>现在每个任务包含三份信息: name, completed, id. 这些数据可以很好的转化为一个对象, 因为有多个任务, 可以用一个对象数组很好的表示这些数据. 去 index.js 中, 创一个 const DATA, 储存三个任务, 作为 props 传给 App 组件. ALL_CAPS 这种常量名称在 JavaScript 中没有特殊意义; 它是一种惯例, 告诉其他开发者 这个数据在这里定义后将永远不会改变.</p>
+
+    <h2>特殊的 key</h2>
+    <p>React 可以将我们的任务从一个数组中渲染出来, 它必须跟踪谁是谁, 以便正确的渲染他们. React 通过自行猜测来保持对每一项的追踪, 不过我们可以通过给 &lt;Todo /&gt; 传递一个 key props 来帮助 React 保持追踪. key 是一个被 React 惯例的特殊的 prop, 不能把它用于其它目的.</p>
+    <p>因为每个 key 必须是不同的, 我们复用每个任务对象的 id 属性来作为他的 key.</p>
+    <p><strong>应该传递不同的 key 给任何使用迭代方式渲染的东西</strong>如果不使用不同的 key, React 会在 console 中记录一个警告. 并且 App 可能会变现的很奇怪!</p>
+
+    <h2>整合 App 的其它部分</h2>
+    <p>再制作两个组件 - Form - FilterButton</p>
+
+    <h2>Callback props 回调 props</h2>
+    <p>在 React 应用中, 交互很少局限于单个组件: 一个组件中发生的事情会影响应用的其它部分. 当我们开始赋予自己创建新任务的权利时, form 组件中发生的事情将影响 App 中渲染的列表</p>
+    <p>我们希望 handleSubmit() 函数最终能够帮助我们创建新任务, 因此我们需要一种将信息从 form 传递到 app 的方法. 不能够使用标准 props 将数据从父传子一样把数据子传父. 但是, 可以在 App 中编写一个函数, 这个函数将表单中的一些数据作为输入, 然后把函数作为 props 传递给 form. 这种作为 prop 的函数称为 回调 prop. 这样就可以在 Form 内部调用它, 将数据正确的发送给 App</p>
+
+    <style></style>
+
+    <script></script>
+  </body>
+</html>

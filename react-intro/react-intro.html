@@ -10,6 +10,26 @@
     <hr />
     <h1>React 入门</h1>
 
+    <div style="border: 1px solid black; padding: 10px">
+      <h2>开始 React 项目前的清理</h2>
+      <p>create-react-app 添加了一些在项目中完全不会用到的文件.</p>
+      <ul>
+        <li>不打算写每个组件的样式表, 所有首先从 App.js 的顶部删除 App.css 的导入</li>
+        <li>也不打算使用 logo.svg, 所以也要删除这个导入</li>
+      </ul>
+      <p>然后, 可以复制粘贴以下命令到终端, 删除一些不需要的文件, 确保在应用程序的根目录下开始!</p>
+      <pre><code>
+# Move into the src directory of your project
+cd src
+# Delete a few files
+rm -- App.test.js App.css logo.svg serviceWorker.js setupTests.js
+# Move back up to the root of the project
+cd ..
+      </code></pre>
+      <p>这里要删除的两个文件是用来测试应用程序的, 如果停止了服务器来做上面的终端任务, 要用 npm start 再次启动</p>
+      <a href="./react-todo.html">react Todo</a>
+    </div>
+
     <h2>设置你的第一个 React 应用</h2>
     <p>
       有很多使用 React 的方法, 但还是建议使用 命令行界面(CLI)工具
