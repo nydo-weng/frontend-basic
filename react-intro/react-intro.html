@@ -41,7 +41,56 @@
         <li>如果电脑上安装了 yarn, create-react-app 会默认使用 yarn 而不是 npm. 可以输入 npx create-react-app my-app --use-npm 来指定使用 npm</li>
       </ul>
     </p>
+    <p>运行完成后, 可以进入该文件夹 cd my-app, 然后 npm start, 之前由create-react-app创建的脚本会启动一个本地服务localhost:3000, 可以打开浏览器来访问这个服务.</p>
+    <h3>应用结构</h3>
+    <p>create-react-app 提供了开发 React 应用所需要的工具, 它的初始文件结构如下:</p>
+    <pre>
+my-app
+├── README.md
+├── node_modules
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    └── serviceWorker.js
+    </pre>
+    <p>目录 src 是会花费时间最多的地方, 因为它是 React 应用源码存放的目录.</p>
+    <p>目录 public 包含了开发应用时浏览器会读取的文件, 其中最重要的是 index.html. React 将 src 中的代码嵌入这个文件, 从而浏览器才能运行次文件. index.html 中的有些内容关乎 create-react-app 的运作, 所以除非知道自己到底在做什么修改, 不然不建议编辑这个文件. 当然, 可以修改 index.html 中的 &lt;title&gt; 元素内容来表现应用程序通俗易懂的名称. 并且这个目录会在建立并且部署这个应用的时候更新.</p>
+    <p>文件 package.json 包含了 Node.js/npm 为了建立这个应用程序所管理着的文件信息. 这个文件不是 React 应用独有的.</p>
 
+    <h2>第一个 React 组件 --- &lt;App /&gt; </h2>
+    <p>在 React 中, 组件是组成应用程序的可重复利用的模块. 组件可大可小, 但它们都只有单一的, 明确的功能.</p>
+    <p>组件主要由三部分组成, 顶部的 import 语句, 中间的 App 组件, 以及底部的 export 语句.</p>
+    <h3>import 语句</h3>
+    <p>脚本开头的 import 语句允许在此脚本中使用其他文件中的代码. 第一句引入了 React 库, 这原本是为了 把 JSX 语句转为 React.createElement(), 现在不是必须了, 因为 JSX 有了新的转换机制. 第二句引入了 ./logo.svg, 路径以./开头, 说明这是一个本地文件, 没有指定 React 模块的路径, 表明它不是来自本地文件, 而是在 package.json 文件中列为依赖项. 第三局引入了组件需要的 CSS 文件, 这里没有将引入的内容赋给任何变量, 也没有用到 from 指令. 这种特殊的语法并非原生 JS 的语法 --- 它源自 前端资源打包工具 webpack, 而 create-react-app 正是基于 webpack 配置而来的.</p>
+    <p>webpack 可用于打包 JS 和 非 JS 的内容 (当然, 非 JS 的内容需要一些插件或加载器来处理), 但是 JavaScript 标准只有关于 JS 的内容, 所以 webpack 社区使用这种特殊的 import 语句来声明对 非JS 内容的引用. 截止 2020 年下旬, webpack 仍然是前端工作中必不可少的技能之一.</p>
+    <h3>App 组件</h3>
+    <p>React 组件使用帕斯卡命名法, 与 JS 社区推崇的驼峰命名法不同. 如 helloWorld 在 React 组件中用 HelloWorld, 来帮助用户辨认一个 JSX 元素是 React 组件而不是普通的 HTML 标签, 如果把函数名 App 改为 app, 浏览器会显示报错.</p>
+    <h3>Export 语句</h3>
+    <p>在 App.js 文件的最底部, export default App 语句是的 App 组件能被其他模块使用.</p>
+
+    <h2>Interrogating the idnex</h2>
+    <p>src/index.js, 这是 app 的入口点</p>
+    <p>src/index.css 定义运行整个 app 的 global style. App 组件也被 imported 了, 这是在 App.js底部的语句让 import App 变的可行.</p>
+
+
+    <h2>Variables and props</h2>
+    <p>这写可以让我们在 React 中编辑组件以及处理数据更加顺手. 如何在 JSX 中使用 variables, 介绍 props, props 是用来往组件里传入数据的一种方法, 传入之后可以用 variable 访问传入的变量.</p>
+    <h3>Variables in JSX</h3>
+    <code>&lt;img src={logo} className="App-logo" alt="logo" /&gt;</code>
+    <p>src 的属性值是在大括号中的 --- {logo}. 这是 JSX 识别变量的方式. React 会识别 {logo}, 并且找到在之前引入的 logo, 然后 React 读取这个文件并渲染.</p>
+    <h3>Component props</h3>
+    <p>prop 是任何传入 React 组件的数据. Props 写在组件中, 并且像 HTML 属性一样写成 prop="value".</p>
 
     <style></style>
 
